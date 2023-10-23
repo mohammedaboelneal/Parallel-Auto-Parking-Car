@@ -1,0 +1,459 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.7                     
+******************************************************************************
+>> Linked Thu Sep 28 19:04:07 2023
+
+OUTPUT FILE NAME:   <NTI_Parallel_AutoParking.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000024e9
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000025e6  0003da1a  R  X
+  SRAM                  20000000   00008000  000002b2  00007d4e  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000025e8   000025e8    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    0000230a   0000230a    r-x .text
+  00002578    00002578    00000070   00000070    r-- .cinit
+20000000    20000000    000002b4   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    000000a2   00000000    rw- .data
+  200002a4    200002a4    00000010   00000000    rw- .bss
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    0000230a     
+                  0000026c    000013ac     Gpio.obj (.text)
+                  00001618    00000388     Sys_Ctrl.obj (.text)
+                  000019a0    00000324     GP_Timers.obj (.text)
+                  00001cc4    000001c0     ultrasonic.obj (.text)
+                  00001e84    0000013c     main.obj (.text)
+                  00001fc0    0000012e     DC_MOTOR_L298.obj (.text)
+                  000020ee    00000002     --HOLE-- [fill = 0]
+                  000020f0    000000ec     PWM.obj (.text)
+                  000021dc    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00002278    00000094     US_App.obj (.text)
+                  0000230c    00000090     NTI_DC_MOTOR_APP.obj (.text)
+                  0000239c    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00002404    0000005c     SysTick.obj (.text)
+                  00002460    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  000024a4    00000044     delay.obj (.text)
+                  000024e8    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  0000251c    0000001c     RCC.obj (.text)
+                  00002538    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00002554    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00002562    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  0000256e    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00002572    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00002578    00000070     
+                  00002578    00000046     (.cinit..data.load) [load image, compression = lzss]
+                  000025be    00000002     --HOLE-- [fill = 0]
+                  000025c0    0000000c     (__TI_handler_table)
+                  000025cc    00000004     --HOLE-- [fill = 0]
+                  000025d0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000025d8    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000200    000000a2     UNINITIALIZED
+                  20000200    0000003f     main.obj (.data:App_Pins)
+                  2000023f    00000015     NTI_DC_MOTOR_APP.obj (.data:DC_Motor_1)
+                  20000254    00000015     NTI_DC_MOTOR_APP.obj (.data:DC_Motor_2)
+                  20000269    00000007     US_App.obj (.data:US1_EchoPin)
+                  20000270    00000007     US_App.obj (.data:US1_TriggerPin)
+                  20000277    00000007     US_App.obj (.data:US2_EchoPin)
+                  2000027e    00000007     US_App.obj (.data:US2_TriggerPin)
+                  20000285    00000007     US_App.obj (.data:US3_EchoPin)
+                  2000028c    00000007     US_App.obj (.data:US3_TriggerPin)
+                  20000293    00000007     US_App.obj (.data:US4_EchoPin)
+                  2000029a    00000007     US_App.obj (.data:US4_TriggerPin)
+                  200002a1    00000001     main.obj (.data)
+
+.bss       0    200002a4    00000010     UNINITIALIZED
+                  200002a4    00000004     (.common:distance1)
+                  200002a8    00000004     (.common:distance2)
+                  200002ac    00000004     (.common:distance3)
+                  200002b0    00000004     (.common:distance4)
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       main.obj                       316    0         80     
+    +--+------------------------------+------+---------+---------+
+       Total:                         328    620       80     
+                                                              
+    .\APP\DCM_App\
+       NTI_DC_MOTOR_APP.obj           144    0         42     
+    +--+------------------------------+------+---------+---------+
+       Total:                         144    0         42     
+                                                              
+    .\APP\US_App\
+       US_App.obj                     148    0         56     
+    +--+------------------------------+------+---------+---------+
+       Total:                         148    0         56     
+                                                              
+    .\HAL\DC_Motors\
+       DC_MOTOR_L298.obj              302    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         302    0         0      
+                                                              
+    .\HAL\UltraSonic_HCSR04\
+       ultrasonic.obj                 448    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         448    0         0      
+                                                              
+    .\MCAL\GPIO\
+       Gpio.obj                       5036   0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         5036   0         0      
+                                                              
+    .\MCAL\GP_TIMERS\
+       GP_Timers.obj                  804    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         804    0         0      
+                                                              
+    .\MCAL\PWM\
+       PWM.obj                        236    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         236    0         0      
+                                                              
+    .\MCAL\RCC\
+       RCC.obj                        28     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         28     0         0      
+                                                              
+    .\MCAL\SysTick\
+       SysTick.obj                    92     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         92     0         0      
+                                                              
+    .\MCAL\SysTick\Delay\
+       delay.obj                      68     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         68     0         0      
+                                                              
+    .\SYS_CTRL\
+       Sys_Ctrl.obj                   904    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         904    0         0      
+                                                              
+    C:\ti\ccs1230\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj              156    0         0      
+       copy_decompress_lzss.c.obj     104    0         0      
+       autoinit.c.obj                 68     0         0      
+       boot_cortex_m.c.obj            52     0         0      
+       copy_zero_init.c.obj           28     0         0      
+       copy_decompress_none.c.obj     14     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         430    0         0      
+                                                              
+       Stack:                         0      0         512    
+       Linker Generated:              0      106       0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   8968   726       690    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000025d8 records: 2, size/record: 8, table size: 16
+	.data: load addr=00002578, load size=00000046 bytes, run addr=20000200, run size=000000a2 bytes, compression=lzss
+	.bss: load addr=000025d0, load size=00000008 bytes, run addr=200002a4, run size=00000010 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000025c0 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+20000200  App_Pins                      
+00002573  C$$EXIT                       
+00001fc1  DCM_Init                      
+0000207d  DCM_RotatNormalDirection      
+000020a5  DCM_RotatReverseDirection     
+0000204f  DCM_SpeedControl              
+000020cd  DCM_Stop                      
+2000023f  DC_Motor_1                    
+20000254  DC_Motor_2                    
+000024cb  Delay_MS                      
+000024a5  Delay_US                      
+00001aa9  GPT_Timer0A_GetPulseWidth     
+000019a1  GPT_Timer0A_InputCaptureInit  
+00001aeb  GPT_Timer1A_GetPulseWidth     
+000019cd  GPT_Timer1A_InputCaptureInit  
+00001b2d  GPT_Timer2A_GetPulseWidth     
+000019f9  GPT_Timer2A_InputCaptureInit  
+00001b6f  GPT_Timer3A_GetPulseWidth     
+00001a25  GPT_Timer3A_InputCaptureInit  
+00001bb1  GPT_Timer4A_GetPulseWidth     
+00001a51  GPT_Timer4A_InputCaptureInit  
+00001bf3  GPT_Timer5A_GetPulseWidth     
+00001a7d  GPT_Timer5A_InputCaptureInit  
+00000809  Gpio_AlternativeFunctionStatus
+00000a99  Gpio_DriverStrengthSelection  
+00000541  Gpio_FlipChannel              
+00000615  Gpio_InitPinDirection         
+00001521  Gpio_LockPin                  
+000013e9  Gpio_LockPort                 
+00000f49  Gpio_OpenDrainSelection       
+0000026d  Gpio_PinConfigInit            
+000002b9  Gpio_ReadChannel              
+00000cc9  Gpio_SetInternalPinConnection 
+0000122d  Gpio_SignalTypeEnable         
+000010bd  Gpio_SlewRateSelection        
+00001455  Gpio_UnlockPin                
+00001385  Gpio_UnlockPort               
+000003af  Gpio_WriteChannel             
+0000230d  NTI_DCM_InitAll               
+00002335  NTI_DCM_MoveBackward          
+0000231d  NTI_DCM_MoveForward           
+0000235f  NTI_DCM_MoveLeft              
+0000234d  NTI_DCM_MoveRight             
+00002371  NTI_DCM_Stop                  
+00002381  NTI_DC_M1_Stop                
+0000238b  NTI_DC_M2_Stop                
+0000212d  PWM_M1_Gen2_Channel4_Init     
+00002191  PWM_M1_Gen2_Channel4_SetDuty  
+000020f1  PWM_M1_Gen3_Channel6_Init     
+00002169  PWM_M1_Gen3_Channel6_SetDuty  
+0000251d  RCC_EnableClkDivisor          
+00002529  RCC_PWM_CLK_Div64             
+00002563  ResetISR                      
+0000168d  SysCtrl_DisableClk_GPIO       
+0000181d  SysCtrl_DisableClk_PWM        
+00001775  SysCtrl_DisableClk_TIMER      
+000018f5  SysCtrl_DisableClk_UART       
+00001619  SysCtrl_EnableClk_GPIO        
+000017e9  SysCtrl_EnableClk_PWM         
+00001701  SysCtrl_EnableClk_TIMER       
+00001851  SysCtrl_EnableClk_UART        
+00002405  SysTick_Init                  
+0000243f  SysTick_Start                 
+0000244b  SysTick_Stop                  
+20000269  US1_EchoPin                   
+0000229d  US1_GetDistance               
+20000270  US1_TriggerPin                
+20000277  US2_EchoPin                   
+000022b1  US2_GetDistance               
+2000027e  US2_TriggerPin                
+20000285  US3_EchoPin                   
+000022c5  US3_GetDistance               
+2000028c  US3_TriggerPin                
+20000293  US4_EchoPin                   
+000022d9  US4_GetDistance               
+2000029a  US4_TriggerPin                
+00001dcb  US_GetDistance                
+00002279  US_InitAllModules             
+00001cc5  US_InitConfig                 
+20000200  __STACK_END                   
+00000200  __STACK_SIZE                  
+20000200  __STACK_TOP                   
+000025d8  __TI_CINIT_Base               
+000025e8  __TI_CINIT_Limit              
+000025c0  __TI_Handler_Table_Base       
+000025cc  __TI_Handler_Table_Limit      
+00002461  __TI_auto_init_nobinit_nopinit
+0000239d  __TI_decompress_lzss          
+00002555  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00002539  __TI_zero_init_nomemset       
+000021dd  __aeabi_memcpy                
+000021dd  __aeabi_memcpy4               
+000021dd  __aeabi_memcpy8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000000  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+000024e9  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+0000256f  _system_pre_init              
+00002573  abort                         
+ffffffff  binit                         
+00001f27  blue_on                       
+00001f77  blue_red_on                   
+200002a4  distance1                     
+200002a8  distance2                     
+200002ac  distance3                     
+200002b0  distance4                     
+00000000  g_pfnVectors                  
+00001f4f  green_blue_on                 
+00001f3b  green_on                      
+00001f63  green_red_on                  
+00001eff  leds_off                      
+00001e85  main                          
+000021dd  memcpy                        
+200002a1  park_flag                     
+00001f13  red_on                        
+00001f8b  white_on                      
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000200  __STACK_SIZE                  
+0000026d  Gpio_PinConfigInit            
+000002b9  Gpio_ReadChannel              
+000003af  Gpio_WriteChannel             
+00000541  Gpio_FlipChannel              
+00000615  Gpio_InitPinDirection         
+00000809  Gpio_AlternativeFunctionStatus
+00000a99  Gpio_DriverStrengthSelection  
+00000cc9  Gpio_SetInternalPinConnection 
+00000f49  Gpio_OpenDrainSelection       
+000010bd  Gpio_SlewRateSelection        
+0000122d  Gpio_SignalTypeEnable         
+00001385  Gpio_UnlockPort               
+000013e9  Gpio_LockPort                 
+00001455  Gpio_UnlockPin                
+00001521  Gpio_LockPin                  
+00001619  SysCtrl_EnableClk_GPIO        
+0000168d  SysCtrl_DisableClk_GPIO       
+00001701  SysCtrl_EnableClk_TIMER       
+00001775  SysCtrl_DisableClk_TIMER      
+000017e9  SysCtrl_EnableClk_PWM         
+0000181d  SysCtrl_DisableClk_PWM        
+00001851  SysCtrl_EnableClk_UART        
+000018f5  SysCtrl_DisableClk_UART       
+000019a1  GPT_Timer0A_InputCaptureInit  
+000019cd  GPT_Timer1A_InputCaptureInit  
+000019f9  GPT_Timer2A_InputCaptureInit  
+00001a25  GPT_Timer3A_InputCaptureInit  
+00001a51  GPT_Timer4A_InputCaptureInit  
+00001a7d  GPT_Timer5A_InputCaptureInit  
+00001aa9  GPT_Timer0A_GetPulseWidth     
+00001aeb  GPT_Timer1A_GetPulseWidth     
+00001b2d  GPT_Timer2A_GetPulseWidth     
+00001b6f  GPT_Timer3A_GetPulseWidth     
+00001bb1  GPT_Timer4A_GetPulseWidth     
+00001bf3  GPT_Timer5A_GetPulseWidth     
+00001cc5  US_InitConfig                 
+00001dcb  US_GetDistance                
+00001e85  main                          
+00001eff  leds_off                      
+00001f13  red_on                        
+00001f27  blue_on                       
+00001f3b  green_on                      
+00001f4f  green_blue_on                 
+00001f63  green_red_on                  
+00001f77  blue_red_on                   
+00001f8b  white_on                      
+00001fc1  DCM_Init                      
+0000204f  DCM_SpeedControl              
+0000207d  DCM_RotatNormalDirection      
+000020a5  DCM_RotatReverseDirection     
+000020cd  DCM_Stop                      
+000020f1  PWM_M1_Gen3_Channel6_Init     
+0000212d  PWM_M1_Gen2_Channel4_Init     
+00002169  PWM_M1_Gen3_Channel6_SetDuty  
+00002191  PWM_M1_Gen2_Channel4_SetDuty  
+000021dd  __aeabi_memcpy                
+000021dd  __aeabi_memcpy4               
+000021dd  __aeabi_memcpy8               
+000021dd  memcpy                        
+00002279  US_InitAllModules             
+0000229d  US1_GetDistance               
+000022b1  US2_GetDistance               
+000022c5  US3_GetDistance               
+000022d9  US4_GetDistance               
+0000230d  NTI_DCM_InitAll               
+0000231d  NTI_DCM_MoveForward           
+00002335  NTI_DCM_MoveBackward          
+0000234d  NTI_DCM_MoveRight             
+0000235f  NTI_DCM_MoveLeft              
+00002371  NTI_DCM_Stop                  
+00002381  NTI_DC_M1_Stop                
+0000238b  NTI_DC_M2_Stop                
+0000239d  __TI_decompress_lzss          
+00002405  SysTick_Init                  
+0000243f  SysTick_Start                 
+0000244b  SysTick_Stop                  
+00002461  __TI_auto_init_nobinit_nopinit
+000024a5  Delay_US                      
+000024cb  Delay_MS                      
+000024e9  _c_int00_noargs               
+0000251d  RCC_EnableClkDivisor          
+00002529  RCC_PWM_CLK_Div64             
+00002539  __TI_zero_init_nomemset       
+00002555  __TI_decompress_none          
+00002563  ResetISR                      
+0000256f  _system_pre_init              
+00002573  C$$EXIT                       
+00002573  abort                         
+000025c0  __TI_Handler_Table_Base       
+000025cc  __TI_Handler_Table_Limit      
+000025d8  __TI_CINIT_Base               
+000025e8  __TI_CINIT_Limit              
+20000000  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000200  App_Pins                      
+20000200  __STACK_END                   
+20000200  __STACK_TOP                   
+2000023f  DC_Motor_1                    
+20000254  DC_Motor_2                    
+20000269  US1_EchoPin                   
+20000270  US1_TriggerPin                
+20000277  US2_EchoPin                   
+2000027e  US2_TriggerPin                
+20000285  US3_EchoPin                   
+2000028c  US3_TriggerPin                
+20000293  US4_EchoPin                   
+2000029a  US4_TriggerPin                
+200002a1  park_flag                     
+200002a4  distance1                     
+200002a8  distance2                     
+200002ac  distance3                     
+200002b0  distance4                     
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[124 symbols]
